@@ -14,7 +14,7 @@
 # limitations under the License.
 [package]
 name = "proptest-semver"
-version = "0.1.0-rc1"
+version = "0.1.1"
 edition = "2021"
 exclude = []
 license = "Apache-2.0"
