@@ -62,6 +62,11 @@ pub const ALWAYS_BUILD_METADATA_REGEX: &str = r"(?-u:(?:([0-9a-zA-Z-]+(?:\.[0-9a
 /// If it ever changes, we will fail that test.
 pub const MAX_COMPARATORS_IN_VERSION_REQ_STRING: usize = 32;
 
+// These should be used as choices when Option is None. Currently it is
+// effectively hard coded in places.
+const DEFAULT_PROBABILITY_OF_PRE_RELEASE: f64 = 0.5;
+const DEFAULT_PROBABILITY_OF_BUILD_METADATA: f64 = 0.5;
+
 prop_compose! {
     /// Arbitrary Semantic Versioning 2.0.0 String.
     ///
@@ -205,7 +210,7 @@ prop_compose! {
 
 prop_compose! {
     /// Creates a valid [semver::Version] via `String`.
-    pub fn arb_version()(v in arb_version_weighted(0.5, 0.5)) -> Version {
+    pub fn arb_version()(v in arb_version_weighted(DEFAULT_PROBABILITY_OF_PRE_RELEASE, DEFAULT_PROBABILITY_OF_BUILD_METADATA)) -> Version {
         v
     }
 }
@@ -222,7 +227,7 @@ prop_compose! {
 
 prop_compose! {
     /// Creates a valid [semver::Version] via the struct itself.
-    pub fn arb_semver_version()(major in any::<u64>(), minor in any::<u64>(), patch in any::<u64>(), pre in arb_option_semver_prerelease(0.5), build in arb_option_semver_build_metadata(0.5)) -> Version {
+    pub fn arb_semver_version()(major in any::<u64>(), minor in any::<u64>(), patch in any::<u64>(), pre in arb_option_semver_prerelease(DEFAULT_PROBABILITY_OF_PRE_RELEASE), build in arb_option_semver_build_metadata(DEFAULT_PROBABILITY_OF_BUILD_METADATA)) -> Version {
         let pre = pre.unwrap_or(semver::Prerelease::new("").unwrap());
         let build = build.unwrap_or(semver::BuildMetadata::new("").unwrap());
 
