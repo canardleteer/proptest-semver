@@ -28,10 +28,10 @@ description = "Property Testing implementations for Semantic Versioning"
 
 
 [dependencies]
-proptest = "1.6.0"
+proptest = "1.11.0"
 # NOTE(canardleteer): Could probably be removed easily.
-proptest-derive = "0.5.1"
-semver = "1.0.25"
+proptest-derive = "0.8.0"
+semver = "1.0.28"
 
 [profile.test.package.proptest]
 opt-level = 3
