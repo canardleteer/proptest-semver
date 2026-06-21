@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3](https://github.com/canardleteer/proptest-semver/compare/v0.1.2...v0.1.3) - 2026-06-21
+
+### Fixed
+
+- less magic numbers
+- upgrade proptest and semver deps for rand advisory
+
+### Other
+
+- *(deps)* bump actions/checkout from 5 to 6
+- *(deps)* bump actions/cache from 4 to 5
+- *(deps)* bump actions/checkout from 4 to 5
+
 ## [0.1.2](https://github.com/canardleteer/proptest-semver/compare/v0.1.1...v0.1.2) - 2025-03-07
 
 ### Fixed
